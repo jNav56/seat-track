@@ -65,7 +65,7 @@ export const Section = ({ route }: IParams) => {
               </View>
               <View style={{ flexDirection: 'row', columnGap: 5 }}>
                 <LocalizedText textKey='Seats -'/>
-                <LocalizedText textKey={seats[item].sort((a, b) => Number(a) - Number(b)).join(', ')}/>
+                <LocalizedText textKey={[...seats[item]].sort((a, b) => Number(a) - Number(b)).join(', ')}/>
               </View>
             </Pressable>
           )}
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   paddingView: {
+    flex: 1,
     marginTop: 16,
     marginBottom : 60,
   },

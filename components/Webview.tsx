@@ -119,7 +119,7 @@ export const Webview = () => {
             }
           });
 
-          const capturedTime = new Date().toISOString(); 
+          const capturedTime = new Date().toISOString();
           dispatch(addSeats({ id: selectedSearchId, seats: obj, time: capturedTime }));
 
           Alert.alert('Seats Added', 'Go to "Seats" tab to see', [
