@@ -1,14 +1,18 @@
 {
   "expo": {
-    "name": "seat-track",
+    "name": "Seat Track",
     "slug": "seat-track",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/seat-track-icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "bundleIdentifier": "com.nava.seatTrack",
+      "infoPlist": {
+        "CFBundleDisplayName": "Seat Track"
+      },
       "supportsTablet": true
     },
     "android": {
@@ -27,10 +31,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/seat-track-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#D06425"
         }
       ],
       "expo-localization"
