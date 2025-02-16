@@ -1,0 +1,23 @@
+{
+  "AppTitle": "Music Sclice",
+  "Home": "Home",
+  "GoHome": "Go Home",
+  "Inbox": "Inbox",
+  "Settings": "Settings",
+  "Welcome": "Welcome to Music Slice",
+  "WelcomeBack": "Welcome back, {{firstName}}!",
+  "Username": "Username",
+  "Password": "Password",
+  "ForgotPassword": "Forgot password?",
+  "LogIn": "Log in",
+  "LogOut": "Log out",
+  "NeedAnAccount": "Need an account?",
+  "SignUp": "Sign up",
+  "Submit": "Submit",
+  "Success": "Success",
+  "HelpCenter": "Help Center",
+  "Time": "Time",
+  "Search": {
+    "Seats": "Search for seats"
+  }
+}
