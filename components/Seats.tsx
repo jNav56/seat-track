@@ -15,9 +15,9 @@ export const Seats = () => {
   const searches = useSelector(selectEntitySearches);
   const selectedSearchId = useSelector(selectSelectedSearch);
   const selectedSearch = searches[selectedSearchId];
-  const seats = selectedSearch.seats;
+  const seats = selectedSearch?.seats ?? {};
   const sectionIds = Object.keys(seats);
-  const lastFetch = selectedSearch.lastFetch;
+  const lastFetch = selectedSearch?.lastFetch ?? '';
   const retrievedTime = new Date(lastFetch);
 
   const getNumberOfRows = (sectionId: string) => {
@@ -47,7 +47,7 @@ export const Seats = () => {
   return (
     <Screen>
       <LocalizedText type='header' textKey='Last fetch done at:'/>
-      <LocalizedText textKey={retrievedTime.toLocaleString()}/>
+      <LocalizedText style={styles.paddingBetween} textKey={retrievedTime.toLocaleString()}/>
       {selectedSearchId ? (
         <VirtualizedList
         data={sectionIds}
@@ -88,21 +88,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 5,
   },
-  endSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  endButton: {
-    paddingStart: 5,
+  paddingBetween: {
+    marginBottom: 10,
   },
   emptyContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  indicator: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
-    borderRadius: 50,
   },
 });

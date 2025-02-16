@@ -31,10 +31,8 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/seat-track-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#D06425"
+          "backgroundColor": "#D06425",
+          "image": "./assets/images/seat-track-icon.png"
         }
       ],
       "expo-localization"

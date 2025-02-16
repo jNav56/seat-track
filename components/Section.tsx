@@ -32,14 +32,17 @@ export const Section = ({ route }: IParams) => {
         return 2; // Double letter
       };
     
-      const typeA = getType(sortAsc ? a : b);
-      const typeB = getType(sortAsc ? b : a);
+      const first = sortAsc ? a : b;
+      const second = sortAsc ? b : a;
+
+      const typeA = getType(first);
+      const typeB = getType(second);
     
       if (typeA !== typeB) {
         return typeA - typeB; // Sort by type first
       }
       
-      return a.localeCompare(b, undefined, { numeric: true }); // Sort alphabetically/numerically within types
+      return first[0].localeCompare(second[0]); // Sort alphabetically/numerically within types
     }
   ), [sortAsc]);
 

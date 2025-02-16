@@ -12,6 +12,7 @@ import { addSeats } from '@/store/states/Searches/slice';
 import { Screen } from '@/controls/Screen';
 import { View } from '@/controls/View';
 import { PrimaryButton, SecondaryButton } from '@/controls/Buttons/Buttons';
+import { LocalizedText } from '@/controls/LocalizedText';
 
 interface Offer {
   items: {
@@ -57,7 +58,7 @@ export const Webview = () => {
   const { colors } = useThemes();
   const searches = useSelector(selectEntitySearches);
   const selectedSearchId = useSelector(selectSelectedSearch);
-  const selectedUrl = searches[selectedSearchId].url;
+  const selectedUrl = searches[selectedSearchId]?.url ?? '';
   const webViewRef = useRef();
   const [webViewUrl, setWebViewUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -153,6 +154,14 @@ export const Webview = () => {
       webViewRef.current.reload(); // Reload without unmounting
     }
   };
+
+  if (!!!selectedUrl) {
+    return (
+      <Screen>
+        <LocalizedText textKey='No url created or selected' center/>
+      </Screen>
+    );
+  }
 
   return (
     <Screen style={styles.screen}>
