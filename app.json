@@ -9,11 +9,13 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "icon": "./assets/images/seat-track-icon.png",
       "bundleIdentifier": "com.nava.seatTrack",
       "infoPlist": {
-        "CFBundleDisplayName": "Seat Track"
+        "CFBundleDisplayName": "Seat Track",
+        "ITSAppUsesNonExemptEncryption": false
       },
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
@@ -39,6 +41,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4cc032f9-9752-4d93-bfe3-a710eb853ba9"
+      }
     }
   }
 }
