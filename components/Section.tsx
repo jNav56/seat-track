@@ -62,7 +62,7 @@ export const Section = ({ route }: IParams) => {
       [...seats[rowId]].sort((a, b) => Number(a.number) - Number(b.number));
 
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap' }}>
         {seatsInRow.map((x, index) => (
           <View key={x.number} style={{ flexDirection: 'row' }}>
             {!!index && <LocalizedText textKey=', '/>}
