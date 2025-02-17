@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable } from 'react-native';
 import { LocalizedText } from '@/controls/LocalizedText';
 import { View } from '@/controls/View';
-import { IconSymbol } from '@/controls/Icons/IconSymbol';
+import { IconSymbol, IconSymbolName } from '@/controls/Icons/IconSymbol';
 import { useAppNavigation } from '@/navigation';
 import { useThemes } from '@/providers/Themes/ThemeProvider';
 
@@ -10,7 +10,8 @@ interface IProps {
   subText?: string;
   disableHeader?: boolean;
   sort?: {
-    asc: boolean;
+    asc?: boolean;
+    icon?: IconSymbolName;
     action: () => void;
   };
 }
@@ -23,6 +24,8 @@ export const TopHeader = ({
 }: IProps) => {
   const navigation = useAppNavigation();
   const { colors } = useThemes();
+
+  const sortIcon = sort?.icon ? sort.icon : (sort?.asc ? 'arrow.up': 'arrow.down');
 
   return (
     <View style={styles.container}>
@@ -37,13 +40,13 @@ export const TopHeader = ({
           </Pressable>
         )}
         <View style={styles.textContainer}>
-          <LocalizedText style={styles.mainText} type='subtitle' textKey={textKey}/>
-          {subText && <LocalizedText type='bodyMedium' textKey={subText}/>}
+          <LocalizedText style={styles.mainText} type='header' textKey={textKey}/>
+          {subText && <LocalizedText textKey={subText}/>}
         </View>
       </View>
       {sort && (
         <Pressable onPress={sort.action}>
-          <IconSymbol name={sort.asc ? 'arrow.up': 'arrow.down'} size={24} color={colors.icon}/>
+          <IconSymbol name={sortIcon} size={24} color={colors.icon}/>
         </Pressable>
       )}
     </View>
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
     paddingEnd: 10,
   },
   textContainer: {
-    alignItems: 'center',
+    justifyContent: 'center',
   },
   mainText: {
     fontWeight: 500,

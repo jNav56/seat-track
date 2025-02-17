@@ -7,23 +7,26 @@ import { View } from '@/controls/View';
 import { TopHeader } from '@/controls/Headers/TopHeader';
 import { LocalizedText } from '@/controls/LocalizedText';
 import { Separator } from '@/controls/Separator';
+import { SectionInfo } from '@/store/states/Searches/interfaces';
+import { useThemes } from '@/providers/Themes/ThemeProvider';
 
 interface IParams {
   route: {
     params :{
       searchId: string;
-      section: string;
+      section: SectionInfo;
     };
   };
 }
 
 export const Section = ({ route }: IParams) => {
+  const { colors } = useThemes();
   const { searchId, section } = route.params;
   const [sortAsc, setSortAsc] = useState(true);
   const searches = useSelector(selectEntitySearches);
 
-  const seats = searches[searchId].seats[section];
-  const seatIds = useMemo(() =>
+  const seats = searches[searchId].seats[section.section];
+  const rowIds = useMemo(() =>
     Object.keys(seats).sort((a, b) => {
 
       const getType = (val: string) => {
@@ -46,20 +49,48 @@ export const Section = ({ route }: IParams) => {
     }
   ), [sortAsc]);
 
-  const headerTitle = `Section ${section}`;
+  const headerTitle = `Section ${section.section}`;
   const sortProp = {
     asc: sortAsc,
     action: () => {
       setSortAsc((prev) => !prev);
     },
   };
+  
+  const getNumberText = (rowId: string) => {
+    const seatsInRow =
+      [...seats[rowId]].sort((a, b) => Number(a.number) - Number(b.number));
+
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        {seatsInRow.map((x, index) => (
+          <View key={x.number} style={{ flexDirection: 'row' }}>
+            {!!index && <LocalizedText textKey=', '/>}
+            <LocalizedText
+              style={{
+                color: x.type === 'STANDARD' ? colors.primary : colors.secondary,
+              }}
+              type='commonSB'
+              textKey={`${x.number}`}/>
+          </View>
+        ))}
+      </View>
+    );
+  };
 
   return (
     <Screen>
       <TopHeader textKey={headerTitle} sort={sortProp}/>
+      <View style={{ flexDirection: 'row', paddingTop: 5 }}>
+        <LocalizedText textKey='('/>
+        <LocalizedText style={{ color: colors.primary }} textKey='Standard'/>
+        <LocalizedText textKey=', '/>
+        <LocalizedText style={{ color: colors.secondary }} textKey='Resale'/>
+        <LocalizedText textKey=')'/>
+      </View>
       <View style={styles.paddingView}>
         <VirtualizedList
-          data={seatIds}
+          data={rowIds}
           renderItem={({ item }: { item: string }) => (
             <Pressable style={styles.container} onPress={() => {}}>
               <View style={{ flexDirection: 'row' }}>
@@ -68,13 +99,13 @@ export const Section = ({ route }: IParams) => {
               </View>
               <View style={{ flexDirection: 'row', columnGap: 5 }}>
                 <LocalizedText textKey='Seats -'/>
-                <LocalizedText textKey={[...seats[item]].sort((a, b) => Number(a) - Number(b)).join(', ')}/>
+                {getNumberText(item)}
               </View>
             </Pressable>
           )}
           keyExtractor={(item: string) => item}
           getItem={(items, index) => items[index]}
-          getItemCount={() => seatIds.length}
+          getItemCount={() => rowIds.length}
           ItemSeparatorComponent={() => <Separator/>}
           ListEmptyComponent={(
             <View style={styles.emptyContainer}>
@@ -92,7 +123,7 @@ const styles = StyleSheet.create({
   },
   paddingView: {
     flex: 1,
-    marginTop: 16,
+    marginTop: 5,
     marginBottom : 60,
   },
   emptyContainer: {

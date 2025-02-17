@@ -72,7 +72,7 @@ export const Home = () => {
         <View>
           <LocalizedText textKey='Current selected search:'/>
           <LocalizedText
-            type='commonSB'
+            type='label'
             style={selectedTextStyle}
             textKey={selectedText}/>
         </View>

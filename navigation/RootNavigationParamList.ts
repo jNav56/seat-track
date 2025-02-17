@@ -1,3 +1,4 @@
+import { SectionInfo } from '@/store/states/Searches/interfaces';
 import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type TabParamList = {
@@ -9,5 +10,5 @@ export type TabParamList = {
 
 export type RootStackParamList = {
   TabsStack: NavigatorScreenParams<TabParamList>;
-  Section: { searchId: string, section: string };
+  Section: { searchId: string, section: SectionInfo };
 };

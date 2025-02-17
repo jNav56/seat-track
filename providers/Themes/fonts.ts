@@ -64,7 +64,7 @@ const presets = {
   },
   commonSB: {
     fontWeight: interFontWeights.semiBold,
-    fontSize: 16,
+    fontSize: 15,
     lineHeight: 24,
   },
   smallStrong: {

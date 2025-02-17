@@ -19,6 +19,7 @@ interface Offer {
     sectionLabel: string;
     rowLabel: string;
     number: string;
+    seatType?: string;
   }[];
 }
 
@@ -83,7 +84,7 @@ export const Webview = () => {
           const obj: Seats = {};
 
           parsedData.offers.forEach((offer: Offer, index: number) => {            
-            if (!!index && offer.items && offer.items.length > 1) {
+            if (offer.items && offer.items.length > 1) {
 
               offer.items.forEach((item) => {
                 if (
@@ -91,7 +92,7 @@ export const Webview = () => {
                   item.rowLabel &&
                   item.number
                 ) {
-                  const { sectionLabel, rowLabel, number } = item;
+                  const { sectionLabel, rowLabel, number, seatType } = item;
 
                   // Check if section is present
                   if (obj[sectionLabel]) {
@@ -100,19 +101,28 @@ export const Webview = () => {
                     if (obj[sectionLabel][rowLabel]) {
     
                       // Check if number is present in row, if not add it
-                      if (!obj[sectionLabel][rowLabel].includes(number)) {
-                        obj[sectionLabel][rowLabel] = [...obj[sectionLabel][rowLabel], number];
+                      if (!obj[sectionLabel][rowLabel].some((x) => x.number === number)) {
+                        obj[sectionLabel][rowLabel] = [
+                          ...obj[sectionLabel][rowLabel],
+                          { number, type: seatType ?? 'other'},
+                        ];
                       }
                     
                     // Row not present, add it
                     } else {
-                      obj[sectionLabel][rowLabel] = [number];
+                      obj[sectionLabel][rowLabel] = [{
+                        number,
+                        type: seatType ?? 'other',
+                      }];
                     }
     
                   // Section not present, add it
                   } else {
                     obj[sectionLabel] = {
-                      [rowLabel]: [number],
+                      [rowLabel]: [{
+                        number,
+                        type: seatType ?? 'other',
+                      }],
                     };
                   }
                 }
