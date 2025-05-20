@@ -46,12 +46,10 @@ The core problem Seat Track solves is **streamlining the process of finding avai
 ## 📁 Project Structure (Simplified)
 
 ```
-/src
 /components # Reusable UI components
-/screens # App screens (WebView, Seat Viewer)
-/redux # Slices and store config
-/utils # API response parsing and helpers
-App.tsx # Entry point
+/app # App screens (WebView, Seat Viewer)
+/store # Slices and store config
+/controls # API response parsing and helpers
 ```
 
 ## 💡 Future Enhancements
