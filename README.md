@@ -1,50 +1,61 @@
-# Welcome to your Expo app 👋
+# Seat Track
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Seat Track is a minimalist mobile app designed to help users quickly access and manage stadium seat availability data. Built with performance and simplicity in mind, the app eliminates unnecessary distractions—no ads, images, or fluff—just fast and readable seat information.
 
-## Get started
+## 🚀 Purpose
 
-1. Install dependencies
+The core problem Seat Track solves is **streamlining the process of finding available seats** in a stadium. It focuses on:
+- Extracting only **relevant API data** from event sites.
+- **Avoiding clutter** like icons, media, or ads.
+- Providing a clean, **mobile-first interface** for fast reading and decision-making.
 
-   ```bash
-   npm install
-   ```
+## 🧭 App Flow
 
-2. Start the app
+1. **Search and Navigate**
+   - Enter a search term or link to access an event website via a built-in WebView.
+   
+2. **Listen for API**
+   - The app monitors network traffic and identifies the correct seat availability API response.
+   
+3. **Store and Format**
+   - Captured data is parsed and stored in a Redux store.
+   - Data is then formatted for ease of use within the app.
 
-   ```bash
-    npx expo start
-   ```
+4. **View and Interact**
+   - Users can:
+     - Browse available seats
+     - Filter by seat type (e.g., standard, resale)
+     - Sort by metrics (e.g., number of seats)
+     - Categorize and view sections clearly
 
-In the output, you'll find options to open the app in a
+## 🛠️ Tech Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **React Native** – Core framework for building the app
+- **Expo** – Simplifies development, testing, and deployment
+- **Redux Toolkit** – For state management of seat data and filters
+- **TypeScript** – Ensures type safety and better code maintainability
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📱 Features
 
-## Get a fresh project
+- 🔎 Integrated WebView for in-app browsing
+- 📡 Real-time API listener to extract data
+- 🧠 Smart parsing and minimal data storage
+- 🗂️ Sorting and filtering by seat attributes
+- ⚡ Lightweight and responsive design
 
-When you're ready, run:
+## 📁 Project Structure (Simplified)
 
-```bash
-npm run reset-project
+```
+/src
+/components # Reusable UI components
+/screens # App screens (WebView, Seat Viewer)
+/redux # Slices and store config
+/utils # API response parsing and helpers
+App.tsx # Entry point
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 💡 Future Enhancements
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Bookmark favorite seat sections
+- Export or share available seat data
+- Add support for multiple stadium formats
