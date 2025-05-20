@@ -9,6 +9,19 @@ The core problem Seat Track solves is **streamlining the process of finding avai
 - **Avoiding clutter** like icons, media, or ads.
 - Providing a clean, **mobile-first interface** for fast reading and decision-making.
 
+## Screenshots
+
+<img src="https://github.com/user-attachments/assets/83c19053-55f3-4fb0-b647-613fca6fbb67" width=250/>
+<img src="https://github.com/user-attachments/assets/d3b241e4-be48-45d5-a5f0-37805da61432" width=250/>
+<img src="https://github.com/user-attachments/assets/aed952f7-c05f-4148-9cf4-5c65c873887e" width=250/>
+<img src="https://github.com/user-attachments/assets/378122c1-ce3f-4f93-bd32-8f46cc8d00f4" width=250/>
+
+## Video
+```
+https://github.com/user-attachments/assets/8d48f4de-5fea-4342-bae7-8305bea4b5f9
+```
+
+
 ## 🧭 App Flow
 
 1. **Search and Navigate**
